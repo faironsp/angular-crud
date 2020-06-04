@@ -7,11 +7,11 @@ import { Product } from '../product.model';
 import { ProductService } from '../product.service';
 
 /**
- * Data source for the ProductRead2 view. This class should
+ * Data source for the ProductRead view. This class should
  * encapsulate all logic for fetching and manipulating the displayed data
  * (including sorting, pagination, and filtering).
  */
-export class ProductRead2DataSource implements DataSource<Product> {
+export class ProductReadDataSource implements DataSource<Product> {
   data: Product[];
   paginator: MatPaginator;
   sort: MatSort;
