@@ -11,7 +11,7 @@
             <input disabled matInput placeholder="E-mail" [value]="user.email" name="email">
         </mat-form-field>
         <mat-form-field>
-            <input required matInput placeholder="Data de Nascimento" [(ngModel)]="user.birthdate" name="birthdate" [matDatepicker]="birthdate">
+            <input disabled matInput placeholder="Data de Nascimento" [(ngModel)]="user.birthdate" name="birthdate" [matDatepicker]="birthdate">
             <mat-datepicker-toggle matSuffix [for]="birthdate"></mat-datepicker-toggle>
             <mat-datepicker #birthdate></mat-datepicker>
         </mat-form-field>

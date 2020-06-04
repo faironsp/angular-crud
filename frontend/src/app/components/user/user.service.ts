@@ -2,7 +2,7 @@ import { map, catchError } from 'rxjs/operators';
 import { User } from './user.model';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, EMPTY } from 'rxjs';
 
 @Injectable({
@@ -10,7 +10,14 @@ import { Observable, EMPTY } from 'rxjs';
 })
 export class UserService {
 
+  //URL da Api do json-server (apenas para rodar o projeto sem necessidade do Sql Server)
   baseUrl: string = 'http://localhost:3001/users';
+
+  //URL da Api do Rodando a API .Net Core Local com Sql Server instalado e banco de dados criado
+  //baseUrl: string = 'http://localhost:55419/users';
+
+  //URL da API publicada no Azure (Utilizei minha conta particular de Dev)
+  //baseUrl: string = 'https://fairon.azurewebsites.net/users';
 
   constructor(private snackBar: MatSnackBar,
     private http: HttpClient) { }
@@ -25,14 +32,14 @@ export class UserService {
   }
 
   create(user: User): Observable<User> {
-    return this.http.post<User>(this.baseUrl, user).pipe(
+    return this.http.post<User>(this.baseUrl, user, { withCredentials: true }).pipe(
       map(obj => obj),
       catchError(e => this.errorHandler(e))
     );
   }
 
   read(): Observable<User[]> {
-    return this.http.get<User[]>(this.baseUrl).pipe(
+    return this.http.get<User[]>(this.baseUrl, { withCredentials: true }).pipe(
       map(obj => obj),
       catchError(e => this.errorHandler(e))
     );
@@ -40,7 +47,7 @@ export class UserService {
 
   readById(id: string): Observable<User> {
     const url = `${this.baseUrl}/${id}`;
-    return this.http.get<User>(url).pipe(
+    return this.http.get<User>(url, { withCredentials: true }).pipe(
       map(obj => obj),
       catchError(e => this.errorHandler(e))
     );
@@ -48,7 +55,7 @@ export class UserService {
 
   update(user: User): Observable<User> {
     const url = `${this.baseUrl}/${user.id}`;
-    return this.http.put<User>(url, user).pipe(
+    return this.http.put<User>(url, user, { withCredentials: true }).pipe(
       map(obj => obj),
       catchError(e => this.errorHandler(e))
     );
@@ -56,7 +63,7 @@ export class UserService {
 
   delete(id: number): Observable<User> {
     const url = `${this.baseUrl}/${id}`;
-    return this.http.delete<User>(url).pipe(
+    return this.http.delete<User>(url, { withCredentials: true }).pipe(
       map(obj => obj),
       catchError(e => this.errorHandler(e))
     );
