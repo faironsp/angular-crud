@@ -24,9 +24,23 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 export class UserCreateComponent implements OnInit {
 
+  nameFormControl = new FormControl('', [
+    Validators.required,
+    Validators.minLength(3),
+  ]);
+
+  lastnameFormControl = new FormControl('', [
+    Validators.required,
+    Validators.minLength(3),
+  ]);
+
   emailFormControl = new FormControl('', [
     Validators.required,
     Validators.email,
+  ]);
+
+  birthdateFormControl = new FormControl('', [
+    Validators.required
   ]);
 
   matcher = new MyErrorStateMatcher();
@@ -57,13 +71,29 @@ export class UserCreateComponent implements OnInit {
 
   createUser(): void {
 
+    if (this.nameFormControl.invalid) {
+      this.matcher = new MyErrorStateMatcher();
+      this.nameFormControl.markAsTouched();
+      return;
+    }
+
+    if (this.lastnameFormControl.invalid) {
+      this.matcher = new MyErrorStateMatcher();
+      this.lastnameFormControl.markAsTouched();
+      return;
+    }
+
     if (this.emailFormControl.invalid) {
       this.matcher = new MyErrorStateMatcher();
-
       this.emailFormControl.markAsTouched();
       return;
     }
 
+    if (this.birthdateFormControl.invalid) {
+      this.matcher = new MyErrorStateMatcher();
+      this.birthdateFormControl.markAsTouched();
+      return;
+    }
 
     this.userService.create(this.user).subscribe(() => {
       this.userService.showMessage('Usuário cadastrado com sucesso!');
