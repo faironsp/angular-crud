@@ -7,6 +7,15 @@
         <mat-form-field>
             <input disabled matInput placeholder="Sobrenome" [value]="user.lastname" name="lastname">
         </mat-form-field>
+        <mat-form-field>
+            <input disabled matInput placeholder="E-mail" [value]="user.email" name="email">
+        </mat-form-field>
+        <mat-form-field>
+            <input disabled matInput placeholder="Data de Nascimento" [value]="user.birthdate" name="birthdate">
+        </mat-form-field>
+        <mat-form-field>
+            <input disabled matInput placeholder="Escolaridade" [value]="user.schooling" name="schooling">
+        </mat-form-field>
     </form>
     <button mat-raised-button (click)="deleteUser()" color="warn">
         Excluir

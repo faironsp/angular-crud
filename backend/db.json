@@ -15,6 +15,22 @@
       "birthdate": "1987-06-25T00:00:00",
       "schooling": 1,
       "id": 2
+    },
+    {
+      "id": 3,
+      "name": "Karina",
+      "lastname": "Tokuhara",
+      "email": "karina@gmail.com",
+      "birthdate": "1987-06-25T00:00:00",
+      "schooling": "1"
+    },
+    {
+      "id": 4,
+      "name": "Evani",
+      "lastname": "Oliveira",
+      "email": "evani@gmail.com",
+      "birthdate": "1963-10-09T00:00:00",
+      "schooling": "2"
     }
   ]
 }

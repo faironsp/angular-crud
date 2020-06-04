@@ -12,7 +12,7 @@ export class UserComponent implements OnInit {
   constructor(private router: Router, private headerService: HeaderService) {
     headerService.headerData = {
       title: "Cadastro de Usuários",
-      icon: "storefront",
+      icon: "supervised_user_circle",
       routeUrl: "/users"
     }
   }

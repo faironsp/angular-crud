@@ -11,7 +11,7 @@ import { User } from '../user.model';
 export class UserUpdateComponent implements OnInit {
 
   user: User;
-
+  
   constructor(
     private userService: UserService,
     private router: Router,
@@ -20,7 +20,7 @@ export class UserUpdateComponent implements OnInit {
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
 
-    this.userService.readById(id).subscribe( user => {
+    this.userService.readById(id).subscribe(user => {
       this.user = user;
     });
   }

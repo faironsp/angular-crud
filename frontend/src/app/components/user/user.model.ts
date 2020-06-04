@@ -3,6 +3,6 @@ export interface User {
     name: string,
     lastname: string,
     email: string,
-    birthdate: Date,
+    birthdate: string,
     schooling: number
 }

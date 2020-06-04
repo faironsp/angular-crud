@@ -7,6 +7,15 @@
         <mat-form-field>
             <input required matInput placeholder="Sobrenome" [(ngModel)]="user.lastname" name="lastname">
         </mat-form-field>
+        <mat-form-field>
+            <input required matInput placeholder="E-mail" [(ngModel)]="user.email" name="email">
+        </mat-form-field>
+        <mat-form-field>
+            <input required matInput placeholder="Data de Nascimento" [(ngModel)]="user.birthdate" name="birthdate">
+        </mat-form-field>
+        <mat-form-field>
+            <input required matInput placeholder="Escolaridade" [(ngModel)]="user.schooling" name="schooling">
+        </mat-form-field>
     </form>
     <button mat-raised-button (click)="updateUser()" color="primary">
         Alterar
