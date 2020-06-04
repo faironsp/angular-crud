@@ -26,10 +26,10 @@ export class ProductUpdateComponent implements OnInit {
   }
 
   updateProduct(): void {
-    /*this.productService.create(this.product).subscribe(() => {
-      this.productService.showMessage('Produto criado!');
+    this.productService.update(this.product).subscribe(() => {
+      this.productService.showMessage('Produto atualizado com sucesso!');
       this.router.navigate(['/products']);
-    });*/
+    });
   }
 
   cancel(): void {
