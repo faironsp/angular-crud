@@ -30,7 +30,6 @@ export class ProductCreateComponent implements OnInit {
   }
 
   cancel(): void {
-    //router
     this.router.navigate(['/products']);
   }
 }
