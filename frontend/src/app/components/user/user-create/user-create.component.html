@@ -12,9 +12,6 @@
             </mat-error>
         </mat-form-field>
 
-
-
-
         <mat-form-field>
             <input required matInput placeholder="Sobrenome" [(ngModel)]="user.lastname" name="lastname"
                 [formControl]="lastnameFormControl" [errorStateMatcher]="matcher">
@@ -25,8 +22,6 @@
                 O sobrenome deve ser maior que <strong>3</strong> caracteres
             </mat-error>
         </mat-form-field>
-
-
 
         <mat-form-field>
             <mat-label>Email</mat-label>
@@ -40,8 +35,6 @@
             </mat-error>
         </mat-form-field>
 
-
-
         <mat-form-field>
             <input required matInput placeholder="Data de Nascimento" [(ngModel)]="user.birthdate" name="birthdate"
                 [matDatepicker]="birthdate" [formControl]="birthdateFormControl" [errorStateMatcher]="matcher">
@@ -52,8 +45,6 @@
             </mat-error>
         </mat-form-field>
 
-
-        
         <mat-form-field>
             <mat-label>Escolaridade</mat-label>
             <mat-select [(ngModel)]="user.schooling" name="schooling">
@@ -63,9 +54,11 @@
             </mat-select>
         </mat-form-field>
     </form>
+
     <button mat-raised-button (click)="createUser()" color="primary">
         Salvar
     </button>
+
     <button mat-raised-button (click)="cancel()">
         Cancelar
     </button>

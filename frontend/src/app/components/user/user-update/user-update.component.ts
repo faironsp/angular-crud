@@ -2,10 +2,19 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
 import { User } from '../user.model';
+import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
+import { ErrorStateMatcher } from '@angular/material/core';
 
 interface Schooling {
   value: number;
   viewValue: string;
+}
+
+export class MyErrorStateMatcher implements ErrorStateMatcher {
+  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+    const isSubmitted = form && form.submitted;
+    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
+  }
 }
 
 @Component({
@@ -14,6 +23,27 @@ interface Schooling {
   styleUrls: ['./user-update.component.css']
 })
 export class UserUpdateComponent implements OnInit {
+
+  nameFormControl = new FormControl('', [
+    Validators.required,
+    Validators.minLength(3),
+  ]);
+
+  lastnameFormControl = new FormControl('', [
+    Validators.required,
+    Validators.minLength(3),
+  ]);
+
+  emailFormControl = new FormControl('', [
+    Validators.required,
+    Validators.email,
+  ]);
+
+  birthdateFormControl = new FormControl('', [
+    Validators.required
+  ]);
+
+  matcher = new MyErrorStateMatcher();
 
   schoolings: Schooling[] = [
     { value: 1, viewValue: 'Infantil' },
@@ -38,10 +68,33 @@ export class UserUpdateComponent implements OnInit {
   }
 
   updateUser(): void {
-    this.userService.update(this.user).subscribe(() => {
-      this.userService.showMessage('Usuário atualizado com sucesso!');
-      this.router.navigate(['/users']);
-    });
+    if (this.nameFormControl.invalid) {
+      this.matcher = new MyErrorStateMatcher();
+      this.nameFormControl.markAsTouched();
+    }
+
+    if (this.lastnameFormControl.invalid) {
+      this.matcher = new MyErrorStateMatcher();
+      this.lastnameFormControl.markAsTouched();
+    }
+
+    if (this.emailFormControl.invalid) {
+      this.matcher = new MyErrorStateMatcher();
+      this.emailFormControl.markAsTouched();
+    }
+
+    if (this.birthdateFormControl.invalid) {
+      this.matcher = new MyErrorStateMatcher();
+      this.birthdateFormControl.markAsTouched();
+      return;
+    }
+
+    if (this.nameFormControl.valid && this.lastnameFormControl.valid && this.emailFormControl.valid && this.birthdateFormControl.valid) {
+      this.userService.update(this.user).subscribe(() => {
+        this.userService.showMessage('Usuário atualizado com sucesso!');
+        this.router.navigate(['/users']);
+      });
+    }
   }
 
   cancel(): void {

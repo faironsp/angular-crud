@@ -2,19 +2,49 @@
     <mat-card-title>Alterar Usuário</mat-card-title>
     <form>
         <mat-form-field>
-            <input required matInput placeholder="Nome" [(ngModel)]="user.name" name="name">
+            <input required matInput placeholder="Nome" [(ngModel)]="user.name" name="name"
+                [formControl]="nameFormControl" [errorStateMatcher]="matcher">
+            <mat-error *ngIf="nameFormControl.hasError('required')">
+                O nome é campo <strong>obrigatório</strong>
+            </mat-error>
+            <mat-error *ngIf="nameFormControl.hasError('minlength')">
+                O nome deve ser maior que <strong>3</strong> caracteres
+            </mat-error>
         </mat-form-field>
+
         <mat-form-field>
-            <input required matInput placeholder="Sobrenome" [(ngModel)]="user.lastname" name="lastname">
+            <input required matInput placeholder="Sobrenome" [(ngModel)]="user.lastname" name="lastname"
+                [formControl]="lastnameFormControl" [errorStateMatcher]="matcher">
+            <mat-error *ngIf="lastnameFormControl.hasError('required')">
+                O sobrenome é campo <strong>obrigatório</strong>
+            </mat-error>
+            <mat-error *ngIf="lastnameFormControl.hasError('minlength')">
+                O sobrenome deve ser maior que <strong>3</strong> caracteres
+            </mat-error>
         </mat-form-field>
+
         <mat-form-field>
-            <input required matInput placeholder="E-mail" [(ngModel)]="user.email" name="email">
+            <mat-label>Email</mat-label>
+            <input required matInput placeholder="E-mail" [(ngModel)]="user.email" name="email"
+                [formControl]="emailFormControl" [errorStateMatcher]="matcher">
+            <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                Digite um e-mail válido
+            </mat-error>
+            <mat-error *ngIf="emailFormControl.hasError('required')">
+                O e-mail é campo <strong>obrigatório</strong>
+            </mat-error>
         </mat-form-field>
+
         <mat-form-field>
-            <input required matInput placeholder="Data de Nascimento" [(ngModel)]="user.birthdate" name="birthdate" [matDatepicker]="birthdate">
+            <input required matInput placeholder="Data de Nascimento" [(ngModel)]="user.birthdate" name="birthdate"
+                [matDatepicker]="birthdate" [formControl]="birthdateFormControl" [errorStateMatcher]="matcher">
             <mat-datepicker-toggle matSuffix [for]="birthdate"></mat-datepicker-toggle>
             <mat-datepicker #birthdate></mat-datepicker>
+            <mat-error *ngIf="birthdateFormControl.hasError('required')">
+                A data de nascimento é campo <strong>obrigatório</strong>
+            </mat-error>
         </mat-form-field>
+        
         <mat-form-field>
             <mat-label>Escolaridade</mat-label>
             <mat-select [(ngModel)]="user.schooling" name="schooling">

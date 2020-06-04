@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
+import { FormControl, FormGroupDirective, NgForm, Validators, FormGroup } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { Router } from '@angular/router';
 import { UserService } from './../user.service';
@@ -66,27 +66,22 @@ export class UserCreateComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
-
   }
 
   createUser(): void {
-
     if (this.nameFormControl.invalid) {
       this.matcher = new MyErrorStateMatcher();
       this.nameFormControl.markAsTouched();
-      return;
     }
 
     if (this.lastnameFormControl.invalid) {
       this.matcher = new MyErrorStateMatcher();
       this.lastnameFormControl.markAsTouched();
-      return;
     }
 
     if (this.emailFormControl.invalid) {
       this.matcher = new MyErrorStateMatcher();
       this.emailFormControl.markAsTouched();
-      return;
     }
 
     if (this.birthdateFormControl.invalid) {
@@ -95,10 +90,12 @@ export class UserCreateComponent implements OnInit {
       return;
     }
 
-    this.userService.create(this.user).subscribe(() => {
-      this.userService.showMessage('Usuário cadastrado com sucesso!');
-      this.router.navigate(['/users']);
-    });
+    if (this.nameFormControl.valid && this.lastnameFormControl.valid && this.emailFormControl.valid && this.birthdateFormControl.valid) {
+      this.userService.create(this.user).subscribe(() => {
+        this.userService.showMessage('Usuário cadastrado com sucesso!');
+        this.router.navigate(['/users']);
+      });
+    }
   }
 
   cancel(): void {
