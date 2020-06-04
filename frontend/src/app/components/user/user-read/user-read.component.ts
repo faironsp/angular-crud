@@ -1,34 +1,34 @@
-import { Product } from './../product.model';
+import { User } from '../user.model';
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
-import { ProductReadDataSource } from './product-read-datasource';
-import { ProductService } from '../product.service';
+import { UserReadDataSource } from './user-read-datasource';
+import { UserService } from '../user.service';
 
 @Component({
-  selector: 'app-product-read',
-  templateUrl: './product-read.component.html',
-  styleUrls: ['./product-read.component.css']
+  selector: 'app-user-read',
+  templateUrl: './user-read.component.html',
+  styleUrls: ['./user-read.component.css']
 })
-export class ProductReadComponent implements AfterViewInit, OnInit {
+export class UserReadComponent implements AfterViewInit, OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  @ViewChild(MatTable) table: MatTable<Product>;
-  dataSource: ProductReadDataSource;
+  @ViewChild(MatTable) table: MatTable<User>;
+  dataSource: UserReadDataSource;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id', 'name', 'price', 'action'];
+  displayedColumns = ['id', 'name', 'lastname', 'action'];
 
-  products: Product[];
+  users: User[];
 
-  constructor(private productService: ProductService) { }
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
-    this.productService.read().subscribe(products => {
-      this.products = products;
+    this.userService.read().subscribe(users => {
+      this.users = users;
 
-      this.dataSource = new ProductReadDataSource(this.products);
+      this.dataSource = new UserReadDataSource(this.users);
 
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;

@@ -3,20 +3,20 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
-import { Product } from '../product.model';
+import { User } from '../user.model';
 
 /**
- * Data source for the ProductRead view. This class should
+ * Data source for the UserRead view. This class should
  * encapsulate all logic for fetching and manipulating the displayed data
  * (including sorting, pagination, and filtering).
  */
-export class ProductReadDataSource implements DataSource<Product> {
-  data: Product[];
+export class UserReadDataSource implements DataSource<User> {
+  data: User[];
   paginator: MatPaginator;
   sort: MatSort;
 
-  constructor(products: Product[]) {
-    this.data = products;
+  constructor(users: User[]) {
+    this.data = users;
   }
 
   /**
@@ -24,7 +24,7 @@ export class ProductReadDataSource implements DataSource<Product> {
    * the returned stream emits new items.
    * @returns A stream of the items to be rendered.
    */
-  connect(): Observable<Product[]> {
+  connect(): Observable<User[]> {
     // Combine everything that affects the rendered data into one update
     // stream for the data-table to consume.
     const dataMutations = [
@@ -48,7 +48,7 @@ export class ProductReadDataSource implements DataSource<Product> {
    * Paginate the data (client-side). If you're using server-side pagination,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getPagedData(data: Product[]) {
+  private getPagedData(data: User[]) {
     const startIndex = this.paginator.pageIndex * this.paginator.pageSize;
     return data.splice(startIndex, this.paginator.pageSize);
   }
@@ -57,7 +57,7 @@ export class ProductReadDataSource implements DataSource<Product> {
    * Sort the data (client-side). If you're using server-side sorting,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getSortedData(data: Product[]) {
+  private getSortedData(data: User[]) {
     if (!this.sort.active || this.sort.direction === '') {
       return data;
     }

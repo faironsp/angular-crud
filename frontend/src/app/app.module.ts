@@ -12,22 +12,22 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { HomeComponent } from './views/home/home.component';
-import { ProductCrudComponent } from './views/product-crud/product-crud.component';
-import { ProductCreateComponent } from './components/product/user-create/user-create.component';
+import { UserComponent } from './views/user/user.component';
+import { UserCreateComponent } from './components/user/user-create/user-create.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { ProductReadComponent } from './components/product/user-read/user-read.component';
+import { UserReadComponent } from './components/user/user-read/user-read.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import localePt from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';
-import { ProductUpdateComponent } from './components/product/user-update/user-update.component';
-import { ProductDeleteComponent } from './components/product/user-delete/user-delete.component';
+import { UserUpdateComponent } from './components/user/user-update/user-update.component';
+import { UserDeleteComponent } from './components/user/user-delete/user-delete.component';
 
 registerLocaleData (localePt);
 
@@ -38,11 +38,11 @@ registerLocaleData (localePt);
     FooterComponent,
     NavComponent,
     HomeComponent,
-    ProductCrudComponent,
-    ProductCreateComponent,
-    ProductReadComponent,
-    ProductUpdateComponent,
-    ProductDeleteComponent
+    UserComponent,
+    UserCreateComponent,
+    UserReadComponent,
+    UserUpdateComponent,
+    UserDeleteComponent
   ],
   imports: [
     BrowserModule,

@@ -1,11 +1,11 @@
-import { ProductCreateComponent } from './components/product/user-create/user-create.component';
+import { UserCreateComponent } from './components/user/user-create/user-create.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { HomeComponent } from './views/home/home.component';
-import { ProductCrudComponent } from './views/product-crud/product-crud.component';
-import { ProductUpdateComponent } from './components/product/user-update/user-update.component';
-import { ProductDeleteComponent } from './components/product/user-delete/user-delete.component';
+import { UserComponent } from './views/user/user.component';
+import { UserUpdateComponent } from './components/user/user-update/user-update.component';
+import { UserDeleteComponent } from './components/user/user-delete/user-delete.component';
 
 const routes: Routes = [
   {
@@ -13,20 +13,20 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
-    path: "products",
-    component: ProductCrudComponent
+    path: "users",
+    component: UserComponent
   },
   {
-    path: "products/create",
-    component: ProductCreateComponent
+    path: "users/create",
+    component: UserCreateComponent
   },
   {
-    path: 'products/update/:id',
-    component: ProductUpdateComponent
+    path: 'users/update/:id',
+    component: UserUpdateComponent
   },
   {
-    path: 'products/delete/:id',
-    component: ProductDeleteComponent
+    path: 'users/delete/:id',
+    component: UserDeleteComponent
   }
 ];
 
