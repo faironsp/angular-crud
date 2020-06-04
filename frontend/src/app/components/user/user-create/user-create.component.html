@@ -14,7 +14,12 @@
             <input required matInput placeholder="Data de Nascimento" [(ngModel)]="user.birthdate" name="birthdate">
         </mat-form-field>
         <mat-form-field>
-            <input required matInput placeholder="Escolaridade" [(ngModel)]="user.schooling" name="schooling">
+            <mat-label>Escolaridade</mat-label>
+            <mat-select [(ngModel)]="user.schooling" name="schooling">
+                <mat-option *ngFor="let x of schoolings" [value]="x.value">
+                    {{x.viewValue}}
+                </mat-option>
+            </mat-select>
         </mat-form-field>
     </form>
     <button mat-raised-button (click)="createUser()" color="primary">

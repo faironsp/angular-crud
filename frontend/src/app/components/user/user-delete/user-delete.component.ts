@@ -3,12 +3,24 @@ import { User } from '../user.model';
 import { UserService } from '../user.service';
 import { Router, ActivatedRoute } from '@angular/router';
 
+interface Schooling {
+  value: string;
+  viewValue: string;
+}
+
 @Component({
   selector: 'app-user-delete',
   templateUrl: './user-delete.component.html',
   styleUrls: ['./user-delete.component.css']
 })
 export class UserDeleteComponent implements OnInit {
+
+  schoolings: Schooling[] = [
+    { value: '1', viewValue: 'Infantil' },
+    { value: '2', viewValue: 'Fundamental' },
+    { value: '3', viewValue: 'Médio' },
+    { value: '4', viewValue: 'Superior' }
+  ];
 
   user: User;
 

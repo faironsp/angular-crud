@@ -3,6 +3,11 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from './../user.service';
 import { User } from '../user.model';
 
+interface Schooling {
+  value: string;
+  viewValue: string;
+}
+
 @Component({
   selector: 'app-user-create',
   templateUrl: './user-create.component.html',
@@ -10,13 +15,20 @@ import { User } from '../user.model';
 })
 export class UserCreateComponent implements OnInit {
 
+  schoolings: Schooling[] = [
+    { value: '1', viewValue: 'Infantil' },
+    { value: '2', viewValue: 'Fundamental' },
+    { value: '3', viewValue: 'Médio' },
+    { value: '4', viewValue: 'Superior' }
+  ];
+
   user: User = {
     id: 0,
     name: "",
     lastname: "",
     email: "",
     birthdate: "",
-    schooling: 1
+    schooling: "1"
   };
 
   constructor(
