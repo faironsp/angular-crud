@@ -1,19 +1,20 @@
 {
-    "products": [
-        {
-            "id": 1,
-            "name": "Caneta BIC",
-            "price": 5.89
-        },
-        {
-            "id": 2,
-            "name": "Notebook Mac Pro",
-            "price": 12000.89
-        },
-        {
-            "id": 3,
-            "name": "Sansung S20",
-            "price": 5000.89
-        }
-    ]
+  "users": [
+    {
+      "name": "Fabio",
+      "lastname": "Andrade",
+      "email": "faironsp@gmail.com",
+      "birthdate": "1986-03-09T00:00:00",
+      "schooling": 1,
+      "id": 1
+    },
+    {
+      "name": "Marisa",
+      "lastname": "Andrade",
+      "email": "marisa@gmail.com",
+      "birthdate": "1987-06-25T00:00:00",
+      "schooling": 1,
+      "id": 2
+    }
+  ]
 }
