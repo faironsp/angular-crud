@@ -22,6 +22,28 @@ export class UserReadComponent implements AfterViewInit, OnInit {
 
   users: User[];
 
+  getSchoolingDescription(schooling: number): string {
+    switch (schooling) {
+      case 1:
+        return "Infantil";
+        break;
+      case 2:
+        return "Fundamental";
+        break;
+      case 3:
+        return "Médio";
+        break;
+      case 4:
+        return "Superior";
+        break;
+      default:
+        return "Erro: " + schooling;
+        break;
+    };
+  }
+
+
+
   constructor(private userService: UserService) { }
 
   ngOnInit() {

@@ -21,6 +21,7 @@ import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { UserReadComponent } from './components/user/user-read/user-read.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -29,8 +30,9 @@ import localePt from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';
 import { UserUpdateComponent } from './components/user/user-update/user-update.component';
 import { UserDeleteComponent } from './components/user/user-delete/user-delete.component';
+import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 
-registerLocaleData (localePt);
+registerLocaleData(localePt);
 
 @NgModule({
   declarations: [
@@ -60,14 +62,22 @@ registerLocaleData (localePt);
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     MatTableModule,
     MatPaginatorModule,
     MatSortModule
   ],
-  providers: [{
-    provide: LOCALE_ID,
-    useValue: 'pt-Br'
-  }],
+  providers: [
+    {
+      provide: LOCALE_ID,
+      useValue: 'pt-Br'
+    },
+    {
+      provide: MAT_DATE_LOCALE,
+      useValue: 'pt-Br'
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

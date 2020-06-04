@@ -4,7 +4,7 @@ import { UserService } from '../user.service';
 import { Router, ActivatedRoute } from '@angular/router';
 
 interface Schooling {
-  value: string;
+  value: number;
   viewValue: string;
 }
 
@@ -16,10 +16,10 @@ interface Schooling {
 export class UserDeleteComponent implements OnInit {
 
   schoolings: Schooling[] = [
-    { value: '1', viewValue: 'Infantil' },
-    { value: '2', viewValue: 'Fundamental' },
-    { value: '3', viewValue: 'Médio' },
-    { value: '4', viewValue: 'Superior' }
+    { value: 1, viewValue: 'Infantil' },
+    { value: 2, viewValue: 'Fundamental' },
+    { value: 3, viewValue: 'Médio' },
+    { value: 4, viewValue: 'Superior' }
   ];
 
   user: User;

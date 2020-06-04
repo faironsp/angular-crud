@@ -5,7 +5,7 @@
       "lastname": "Andrade",
       "email": "faironsp@gmail.com",
       "birthdate": "1986-03-09T00:00:00",
-      "schooling": 1,
+      "schooling": 4,
       "id": 1
     },
     {
@@ -13,7 +13,7 @@
       "lastname": "Andrade",
       "email": "marisa@gmail.com",
       "birthdate": "1987-06-25T00:00:00",
-      "schooling": 1,
+      "schooling": 4,
       "id": 2
     },
     {
@@ -22,7 +22,7 @@
       "lastname": "Tokuhara",
       "email": "karina@gmail.com",
       "birthdate": "1987-06-25T00:00:00",
-      "schooling": "1"
+      "schooling": 4
     },
     {
       "id": 4,
@@ -30,7 +30,15 @@
       "lastname": "Oliveira",
       "email": "evani@gmail.com",
       "birthdate": "1963-10-09T00:00:00",
-      "schooling": "2"
+      "schooling": 3
+    },
+    {
+      "id": 5,
+      "name": "Bertran",
+      "lastname": "Andrade",
+      "email": "bertran@gmail.com",
+      "birthdate": "1963-05-06T00:00:00\t",
+      "schooling": 3
     }
   ]
 }
