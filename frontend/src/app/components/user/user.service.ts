@@ -15,6 +15,7 @@ export class UserService {
 
   //URL da Api do Rodando a API .Net Core Local com Sql Server instalado e banco de dados criado
   //baseUrl: string = 'http://localhost:55419/users';
+  //Link para baixar o projeto do Git: https://github.com/faironsp/netcore-api
 
   //URL da API publicada no Azure (Utilizei minha conta particular de Dev)
   //baseUrl: string = 'https://fairon.azurewebsites.net/users';
