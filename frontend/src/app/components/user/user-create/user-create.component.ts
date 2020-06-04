@@ -1,5 +1,7 @@
-import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
+import { ErrorStateMatcher } from '@angular/material/core';
+import { Router } from '@angular/router';
 import { UserService } from './../user.service';
 import { User } from '../user.model';
 
@@ -8,12 +10,26 @@ interface Schooling {
   viewValue: string;
 }
 
+export class MyErrorStateMatcher implements ErrorStateMatcher {
+  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+    const isSubmitted = form && form.submitted;
+    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
+  }
+}
+
 @Component({
   selector: 'app-user-create',
   templateUrl: './user-create.component.html',
   styleUrls: ['./user-create.component.css']
 })
 export class UserCreateComponent implements OnInit {
+
+  emailFormControl = new FormControl('', [
+    Validators.required,
+    Validators.email,
+  ]);
+
+  matcher = new MyErrorStateMatcher();
 
   schoolings: Schooling[] = [
     { value: 1, viewValue: 'Infantil' },
@@ -40,6 +56,15 @@ export class UserCreateComponent implements OnInit {
   }
 
   createUser(): void {
+
+    if (this.emailFormControl.invalid) {
+      this.matcher = new MyErrorStateMatcher();
+
+      this.emailFormControl.markAsTouched();
+      return;
+    }
+
+
     this.userService.create(this.user).subscribe(() => {
       this.userService.showMessage('Usuário cadastrado com sucesso!');
       this.router.navigate(['/users']);
