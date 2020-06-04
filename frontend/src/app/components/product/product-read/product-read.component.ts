@@ -18,15 +18,9 @@ export class ProductReadComponent implements AfterViewInit, OnInit {
   dataSource: ProductReadDataSource;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id', 'name', 'price'];
+  displayedColumns = ['id', 'name', 'price', 'action'];
 
-  //products: Product[];
-
-  products: Product[] = [{
-    id: 1,
-    name: "Teste",
-    price: 9
-  }];
+  products: Product[];
 
   constructor(private productService: ProductService) { }
 
