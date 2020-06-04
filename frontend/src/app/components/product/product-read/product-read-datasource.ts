@@ -4,7 +4,6 @@ import { MatSort } from '@angular/material/sort';
 import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
 import { Product } from '../product.model';
-import { ProductService } from '../product.service';
 
 /**
  * Data source for the ProductRead view. This class should
@@ -16,11 +15,8 @@ export class ProductReadDataSource implements DataSource<Product> {
   paginator: MatPaginator;
   sort: MatSort;
 
-  constructor(private productService: ProductService) {
-    this.productService.read().subscribe(products => {
-      this.data = products;
-      console.log(products);
-    });
+  constructor(products: Product[]) {
+    this.data = products;
   }
 
   /**
