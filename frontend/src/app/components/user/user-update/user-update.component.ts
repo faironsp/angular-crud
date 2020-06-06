@@ -2,19 +2,10 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
 import { User } from '../user.model';
-import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
-import { ErrorStateMatcher } from '@angular/material/core';
 
 interface Schooling {
   value: number;
   viewValue: string;
-}
-
-export class MyErrorStateMatcher implements ErrorStateMatcher {
-  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-    const isSubmitted = form && form.submitted;
-    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
-  }
 }
 
 @Component({
@@ -24,27 +15,6 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 export class UserUpdateComponent implements OnInit {
 
-  nameFormControl = new FormControl('', [
-    Validators.required,
-    Validators.minLength(3),
-  ]);
-
-  lastnameFormControl = new FormControl('', [
-    Validators.required,
-    Validators.minLength(3),
-  ]);
-
-  emailFormControl = new FormControl('', [
-    Validators.required,
-    Validators.email,
-  ]);
-
-  birthdateFormControl = new FormControl('', [
-    Validators.required
-  ]);
-
-  matcher = new MyErrorStateMatcher();
-
   schoolings: Schooling[] = [
     { value: 1, viewValue: 'Infantil' },
     { value: 2, viewValue: 'Fundamental' },
@@ -52,7 +22,17 @@ export class UserUpdateComponent implements OnInit {
     { value: 4, viewValue: 'Superior' }
   ];
 
-  user: User;
+  user: User = {
+    id: 0,
+    name: "",
+    lastname: "",
+    email: "",
+    birthdate: "",
+    schooling: 1
+  };
+
+  // TODO: Remove this when we're done
+  get diagnostic() { return JSON.stringify(this.user); }
 
   constructor(
     private userService: UserService,
@@ -68,33 +48,38 @@ export class UserUpdateComponent implements OnInit {
   }
 
   updateUser(): void {
+    /*
     if (this.nameFormControl.invalid) {
-      this.matcher = new MyErrorStateMatcher();
+      this.matcher = new ErrorStateMatcher();
       this.nameFormControl.markAsTouched();
     }
 
     if (this.lastnameFormControl.invalid) {
-      this.matcher = new MyErrorStateMatcher();
+      this.matcher = new ErrorStateMatcher();
       this.lastnameFormControl.markAsTouched();
     }
 
     if (this.emailFormControl.invalid) {
-      this.matcher = new MyErrorStateMatcher();
+      this.matcher = new ErrorStateMatcher();
       this.emailFormControl.markAsTouched();
     }
 
     if (this.birthdateFormControl.invalid) {
-      this.matcher = new MyErrorStateMatcher();
+      this.matcher = new ErrorStateMatcher();
       this.birthdateFormControl.markAsTouched();
       return;
     }
 
     if (this.nameFormControl.valid && this.lastnameFormControl.valid && this.emailFormControl.valid && this.birthdateFormControl.valid) {
-      this.userService.update(this.user).subscribe(() => {
-        this.userService.showMessage('Usuário atualizado com sucesso!');
-        this.router.navigate(['/users']);
-      });
+
     }
+    */
+
+    this.userService.update(this.user).subscribe(() => {
+      this.userService.showMessage('Usuário atualizado com sucesso!');
+      this.router.navigate(['/users']);
+    });
+
   }
 
   cancel(): void {
