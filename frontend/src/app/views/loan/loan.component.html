@@ -1,0 +1,37 @@
+<mat-card>
+    <mat-card-title>Simulação de Empréstimo</mat-card-title>
+    <form>
+        <mat-form-field>
+            <input required matInput placeholder="Valor Solicitado" name="txtValorSolicitado"
+                [formControl]="txtValorSolicitado">
+            <mat-error *ngIf="txtValorSolicitado.hasError('required')">
+                O nome é campo <strong>obrigatório</strong>
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input required matInput placeholder="Taxa de Juros" name="txtTaxaDeJuros" [formControl]="txtTaxaDeJuros">
+            <mat-error *ngIf="txtTaxaDeJuros.hasError('required')">
+                O nome é campo <strong>obrigatório</strong>
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input required matInput placeholder="Número de Parcelas" name="txtNumeroDeParcelas"
+                [formControl]="txtNumeroDeParcelas">
+            <mat-error *ngIf="txtNumeroDeParcelas.hasError('required')">
+                O nome é campo <strong>obrigatório</strong>
+            </mat-error>
+        </mat-form-field>
+
+        <label>{{value}}</label>
+    </form>
+
+    <button mat-raised-button (click)="simulate()" color="primary">
+        Simular
+    </button>
+
+    <button mat-raised-button (click)="clear()">
+        Limpar
+    </button>
+</mat-card>

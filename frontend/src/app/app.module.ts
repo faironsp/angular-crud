@@ -31,6 +31,7 @@ import { registerLocaleData } from '@angular/common';
 import { UserUpdateComponent } from './components/user/user-update/user-update.component';
 import { UserDeleteComponent } from './components/user/user-delete/user-delete.component';
 import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
+import { LoanComponent } from './views/loan/loan.component';
 
 registerLocaleData(localePt);
 
@@ -45,7 +46,8 @@ registerLocaleData(localePt);
     UserCreateComponent,
     UserReadComponent,
     UserUpdateComponent,
-    UserDeleteComponent
+    UserDeleteComponent,
+    LoanComponent
   ],
   imports: [
     BrowserModule,

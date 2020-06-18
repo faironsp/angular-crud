@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { HomeComponent } from './views/home/home.component';
 import { UserComponent } from './views/user/user.component';
+import { LoanComponent } from './views/loan/loan.component';
 import { UserUpdateComponent } from './components/user/user-update/user-update.component';
 import { UserDeleteComponent } from './components/user/user-delete/user-delete.component';
 
@@ -27,6 +28,10 @@ const routes: Routes = [
   {
     path: 'users/delete/:id',
     component: UserDeleteComponent
+  },
+  {
+    path: "loans",
+    component: LoanComponent
   }
 ];
 
