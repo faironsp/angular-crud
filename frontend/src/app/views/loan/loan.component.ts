@@ -57,11 +57,8 @@ export class LoanComponent implements OnInit {
   private async setApiUrlBase() {
     await this.get().then(
       response => {
-
         //preenche a tela
         this.value = `Serão ${this.txtNumeroDeParcelas.value}x de R$ ` + response;
-        
-        console.log(response);
       },
       err => {
         // Promise fail error handling
