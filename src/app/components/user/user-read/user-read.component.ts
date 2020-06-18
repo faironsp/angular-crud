@@ -18,7 +18,7 @@ export class UserReadComponent implements AfterViewInit, OnInit {
   dataSource: UserReadDataSource;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id', 'name', 'lastname', 'email', 'birthdate', 'schooling', 'action'];
+  displayedColumns = ['id', 'name', 'lastName', 'email', 'birthdate', 'schooling', 'action'];
 
   users: User[];
 

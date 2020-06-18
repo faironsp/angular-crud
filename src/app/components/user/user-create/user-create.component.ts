@@ -29,7 +29,7 @@ export class UserCreateComponent implements OnInit {
     Validators.minLength(3),
   ]);
 
-  lastnameFormControl = new FormControl('', [
+  lastNameFormControl = new FormControl('', [
     Validators.required,
     Validators.minLength(3),
   ]);
@@ -55,7 +55,7 @@ export class UserCreateComponent implements OnInit {
   user: User = {
     id: 0,
     name: "",
-    lastname: "",
+    lastName: "",
     email: "",
     birthdate: "",
     schooling: 1
@@ -74,9 +74,9 @@ export class UserCreateComponent implements OnInit {
       this.nameFormControl.markAsTouched();
     }
 
-    if (this.lastnameFormControl.invalid) {
+    if (this.lastNameFormControl.invalid) {
       this.matcher = new MyErrorStateMatcher();
-      this.lastnameFormControl.markAsTouched();
+      this.lastNameFormControl.markAsTouched();
     }
 
     if (this.emailFormControl.invalid) {
@@ -90,7 +90,7 @@ export class UserCreateComponent implements OnInit {
       return;
     }
 
-    if (this.nameFormControl.valid && this.lastnameFormControl.valid && this.emailFormControl.valid && this.birthdateFormControl.valid) {
+    if (this.nameFormControl.valid && this.lastNameFormControl.valid && this.emailFormControl.valid && this.birthdateFormControl.valid) {
       this.userService.create(this.user).subscribe(() => {
         this.userService.showMessage('Usuário cadastrado com sucesso!');
         this.router.navigate(['/users']);

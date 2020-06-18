@@ -25,7 +25,7 @@ export class UserUpdateComponent implements OnInit {
   user: User = {
     id: 0,
     name: "",
-    lastname: "",
+    lastName: "",
     email: "",
     birthdate: "",
     schooling: 1
@@ -54,9 +54,9 @@ export class UserUpdateComponent implements OnInit {
       this.nameFormControl.markAsTouched();
     }
 
-    if (this.lastnameFormControl.invalid) {
+    if (this.lastNameFormControl.invalid) {
       this.matcher = new ErrorStateMatcher();
-      this.lastnameFormControl.markAsTouched();
+      this.lastNameFormControl.markAsTouched();
     }
 
     if (this.emailFormControl.invalid) {
@@ -70,7 +70,7 @@ export class UserUpdateComponent implements OnInit {
       return;
     }
 
-    if (this.nameFormControl.valid && this.lastnameFormControl.valid && this.emailFormControl.valid && this.birthdateFormControl.valid) {
+    if (this.nameFormControl.valid && this.lastNameFormControl.valid && this.emailFormControl.valid && this.birthdateFormControl.valid) {
 
     }
     */
